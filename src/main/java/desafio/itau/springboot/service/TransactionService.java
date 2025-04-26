@@ -5,6 +5,7 @@ import desafio.itau.springboot.model.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -28,6 +29,10 @@ public class TransactionService {
                 .filter(t -> t.getDataHora().isAfter(now.minusSeconds(60)))
                 .mapToDouble(Transaction:: getValor)
                 .summaryStatistics();
+    }
+
+    public Queue getAllTransactions(){
+        return transactions;
     }
 
 }
